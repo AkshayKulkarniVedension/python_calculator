@@ -17,6 +17,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.12'
+      - name: install tests framework
+        run: pip install pytest
       - name: run tests
         run: pytest tests/ 
       
