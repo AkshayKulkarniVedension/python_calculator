@@ -27,7 +27,9 @@ jobs:
         run: pip install pytest
 
       - name: List repository files
-        run: ls -R
+        run: |
+          echo "Working directory: $(pwd)"
+          ls -R
 
       - name: Run tests
-        run: pytest SAMPLE_PYTHON_PROJECT/tests
+        run: pytest sample_python_project/tests
