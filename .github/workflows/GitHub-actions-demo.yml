@@ -1,5 +1,6 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
 on:
   push:
     branches:
@@ -7,18 +8,26 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
-      - name: setup python
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.12'
-      - name: install tests framework
+
+      - name: Install pytest
         run: pip install pytest
-      - name: run tests
-        run: pytest tests/ 
-      
+
+      - name: List repository files
+        run: ls -R
+
+      - name: Run tests
+        run: pytest ./tests
