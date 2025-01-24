@@ -18,3 +18,9 @@ def multiply(*args):
 
 def divide(a, b):
     return a/b
+
+import subprocess
+
+def insecure_function(user_input):
+    # Vulnerable to command injection
+    subprocess.run(user_input, shell=True)
